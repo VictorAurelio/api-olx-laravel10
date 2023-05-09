@@ -8,20 +8,20 @@ use Illuminate\Http\JsonResponse;
  * [x] - /ping - answer PONG
  *
  * - Authentication routes via Token
- * [] - /user/signin - user signin
- * [] - /user/signup - user signup
- * [] - /user/me - user profile
+ * [x] - /user/signin - user signin
+ * [x] - /user/signup - user signup
+ * [x] - /user/me - user profile
  *
  * - Generic routes
  * [x] - /states - list all states
  * [x] - /categories - list all categories
  *
  * - Advertisements routes
- * [] - /ad/list - list all advertisements
- * [] - /ad/:id - show a specific advertisement
- * [] - /ad/add - add a new advertisement
- * [] - /ad/:id (PUT) - update an existing advertisement
- * [] - /ad/:id (DELETE) - delete an existing advertisement
+ * [x] - /ad/list - list all advertisements
+ * [x] - /ad/:id - show a specific advertisement
+ * [x] - /ad/add - add a new advertisement
+ * [x] - /ad/:id (PUT) - update an existing advertisement
+ * [x] - /ad/:id (DELETE) - delete an existing advertisement
  * [] - /ad/:id/:image - show an image
  *
  * **/
@@ -44,6 +44,12 @@ Route::get('/categories', [\App\Http\Controllers\Generics\CategoriesController::
 /*
  *  Advertisements routes
  */
+
+Route::get('/ad/list', [\App\Http\Controllers\Advertisements\AdvertisementController::class, 'index']);
+Route::get('/ad/{id}', [\App\Http\Controllers\Advertisements\AdvertisementController::class, 'showAdvertisement']);
+Route::post('/ad/add', [\App\Http\Controllers\Advertisements\AdvertisementController::class, 'createAdvertisement']);
+Route::delete('/ad/{id}', [\App\Http\Controllers\Advertisements\AdvertisementController::class, 'deleteAdvertisement']);
+Route::put('/ad/{id}', [\App\Http\Controllers\Advertisements\AdvertisementController::class, 'updateAdvertisement']);
 
 /*
  *  Authentication routes
